@@ -1,13 +1,16 @@
 //express required
 const express = require ("express");
+const ejs = require("ejs");
 
 //use express module
 const app = express();
+app.use(express.static("public"));
+app.set('view engine', 'ejs');
 const port = 3000;
 
 //get route for the app
 app.get("/", function(req, res){
-    res.send("Sleep Tracker");
+    res.render("home");
 })
 
 //app is listening to the port 3000 as server
