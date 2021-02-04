@@ -1,7 +1,7 @@
-## DrowsinessDetectionSystem
+# DrowsinessDetectionSystem
 Drowsiness Detection System using Machine Learning.
 
-# How to install
+## How to install
 to run this app you have to clone it to your pc. After that install node moduled
 using,
 
@@ -11,7 +11,7 @@ after that use nodemon to run the application on your local server
 
         > nodemon app.js
         
-#To view application
+## To Install
 after initializing nodemon go to your broweser and use,
         > http://localhost:3000/
 to go to deferent route use,
