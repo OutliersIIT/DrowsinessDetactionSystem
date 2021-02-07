@@ -18,6 +18,11 @@ app.get("/about", function(req, res){
     res.render("about");
 })
 
+//get route for the start
+app.get("/start", function(req, res){
+    res.render("/")
+})
+
 //app is listening to the port 3000 as server
 app.listen(port, function(){
    console.log("[Server] - Server is running on :/localhost/3000"); 
