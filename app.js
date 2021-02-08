@@ -18,6 +18,11 @@ app.get("/about", function(req, res){
     res.render("about");
 })
 
+//get route for the Heart Rate
+app.get("/heartRate", function(req, res){
+    res.render("heartRate");
+})
+
 //get route for the start
 app.get("/start", function(req, res){
     res.render("/")
