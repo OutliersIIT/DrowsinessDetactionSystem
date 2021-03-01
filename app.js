@@ -18,7 +18,6 @@ app.get("/about", function(req, res){
     res.render("about");
 })
 
-<<<<<<< HEAD
 //get rout for the heart Rate
 app.get("/hartrate", function(req, res){
     res.render("hartrate");
@@ -31,17 +30,7 @@ app.get("/activelevel", function(req, res){
 
 //get rout for the hand motion
 app.get("/handmotion", function(req, res){
-    res.render("handmotion")
-=======
-//get route for the Heart Rate
-app.get("/heartRate", function(req, res){
-    res.render("heartRate");
-})
-
-//get route for the start
-app.get("/start", function(req, res){
-    res.render("/")
->>>>>>> 0980244d2511dcf704f07575d09d1b8da894e2f1
+    res.render("activelevel")
 })
 
 //app is listening to the port 3000 as server
