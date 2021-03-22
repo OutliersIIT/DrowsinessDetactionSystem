@@ -10,13 +10,16 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.MessageApi;
+import com.google.android.gms.wearable.MessageClient;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.NodeApi;
+import com.google.android.gms.wearable.NodeClient;
 import com.google.android.gms.wearable.Wearable;
 
-public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener  {
+public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     GoogleApiClient googleApiClient = null;
     public static final String TAG = null;
@@ -79,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         @Override
         public void run() {
             NodeApi.GetConnectedNodesResult nodeList = Wearable.NodeApi.getConnectedNodes(googleApiClient).await();
+//            NodeClient nodeClient = Wearable.getNodeClient().getConnectedNodes(googleApiClient).await();
             for (Node node : nodeList.getNodes()){
                 MessageApi.SendMessageResult messageResult =  Wearable.MessageApi.sendMessage(googleApiClient,node.getId(),path,message.getBytes()).await();
                 if (messageResult.getStatus().isSuccess()){
