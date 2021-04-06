@@ -33,6 +33,19 @@ app.get("/handmotion", function(req, res){
     res.render("activelevel")
 })
 
+// get rout for the sleep
+app.get("/sleep",function(req, res){
+    res.render("sleep")
+})
+
+//get rout for the Rate Us
+app.get("/rateus",function(req, res){
+    res.render("rateus")
+})
+
+
+
+
 //app is listening to the port 3000 as server
 app.listen(port, function(){
    console.log("[Server] - Server is running on :/localhost/3000"); 
