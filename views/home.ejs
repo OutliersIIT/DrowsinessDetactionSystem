@@ -1,34 +1,35 @@
 <%- include('partials/header') %>
+  <style>
 
-<section class="jumbotron text-center">
+
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+  .bg-1 { 
+    background-color: #1abc9c; /* Green */
+    color: #ffffff;
+}
+
+
+  .container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  </style>
+<!-- this is main page of the outliers web site
+                                                 the page including welcome note and the app name-->
+
+<h1>Welcome</h1>
+<div class="jumbotron">
     <div class="container">
-      <h1>Drowseness Detection System</h1>
-
-      <p class="lead text-muted">We are Outliers. warmly Welcome to our app. Join with us</p>
-      <form class="form-signin">
-        <img class="mb-4" src="img/logo.jpeg" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <input type="Name" id="inputName" class="form-control" placeholder="Name" required="">
-        <label for="inputName" class="sr-only">Age</label>
-        <input type="age" id="inputAge" class="form-control" placeholder="Age" required="">
-        <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me"> Remember me
-          </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        </form>
-      
-      <p>
-        <a href="/activelevel" class="btn btn-primary my-2">Active Level</a>
-        <a class="btn btn-secondary my-2" href="/hartrate">Hart Rate</a>
-        <a class="btn btn-dark" href="/handmotion"> Motion</a>
-
-      <p class="lead text-muted">Something short and leading about the collection skip over it entirely.</p>
+      <h1 class="display-3">We are Outliers</h1>
      
     </div>
-</section>
+  </div>
+  <video autoplay muted loop class="drowsy">
+    <!-- vedio is muted and run as a loop-->
+    <source src="img/drowsy.mp4" type="drowsy/mp4">
+ </video>
 
-<img src="img/drowsy.png" class="rounded-circle" alt="Cinque Terre">
 
 <%- include('partials/footer') %>

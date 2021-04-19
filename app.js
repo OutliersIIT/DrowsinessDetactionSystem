@@ -8,9 +8,9 @@ app.use(express.static("public"));
 app.set('view engine', 'ejs');
 const port = 3000;
 
-//get rout for the app
-app.get("/outliers",function(req,res){
-    res.render("outliers")
+//get route for the app
+app.get("/login", function(req, res){
+    res.render("login");
 })
 
 //get route for the app
