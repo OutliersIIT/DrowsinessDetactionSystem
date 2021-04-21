@@ -9,7 +9,7 @@ import android.widget.Button;
 
 public class MenuPage extends AppCompatActivity {
 
-    private Button heartrate_button,drawsy_button,terms_con_button;
+    private Button heartrate_button,drawsy_button,terms_con_button,rateus_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,7 @@ public class MenuPage extends AppCompatActivity {
         drawsy_button = (Button) findViewById(R.id.button1);
         heartrate_button = (Button) findViewById(R.id.button2);
         terms_con_button = (Button) findViewById(R.id.button3);
+        rateus_button = (Button) findViewById(R.id.button4);
 
        heartrate_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,12 +36,19 @@ public class MenuPage extends AppCompatActivity {
             }});
 
 
-    terms_con_button.setOnClickListener(new View.OnClickListener() {
+        terms_con_button.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             terms();
         }});
-}
+
+
+        rateus_button.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            rate();
+        }});
+        }
 
     private void signin() {
         Intent intent=new Intent(MenuPage.this, HeartRate.class);
@@ -54,6 +62,11 @@ public class MenuPage extends AppCompatActivity {
 
     private void terms() {
         Intent intent=new Intent(MenuPage.this, Terms_and_Con.class);
+        startActivity(intent);
+    }
+
+    private void rate() {
+        Intent intent=new Intent(MenuPage.this, Rating.class);
         startActivity(intent);
     }
 }
