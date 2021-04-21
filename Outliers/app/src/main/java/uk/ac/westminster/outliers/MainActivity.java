@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
                 handler = new Handler();
                 handler.postDelayed(new Runnable() {
+
                     @Override
                     public void run() {
                         Intent intent = new Intent(MainActivity.this, welcome.class);

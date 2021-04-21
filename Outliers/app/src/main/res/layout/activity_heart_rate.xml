@@ -66,15 +66,15 @@
 
     <TextView
         android:id="@+id/generateNum"
-        android:layout_width="299dp"
-        android:layout_height="111dp"
-        android:layout_marginBottom="76dp"
+        android:layout_width="124dp"
+        android:layout_height="82dp"
+        android:layout_marginBottom="80dp"
         android:text=""
         android:textColor="@color/white"
         android:textSize="55sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent" />
 
 

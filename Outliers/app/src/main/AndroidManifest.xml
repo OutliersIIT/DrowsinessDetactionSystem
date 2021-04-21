@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Outliers">
-        <activity android:name=".Rating"></activity>
+        <activity android:name=".DrowsyTime"></activity>
+        <activity android:name=".Rating" />
         <activity android:name=".Terms_and_Con" />
         <activity android:name=".welcome" />
         <activity android:name=".DrawsyDetection" />

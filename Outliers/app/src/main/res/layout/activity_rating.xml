@@ -12,13 +12,13 @@
         android:id="@+id/textView11"
         android:layout_width="304dp"
         android:layout_height="65dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="4dp"
         android:text="Terms of services and privacy policy Copyright by Outliers"
-        android:textColor="@color/white"
         android:textAlignment="center"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.654"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
     <RatingBar

@@ -37,7 +37,8 @@
         android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+
+        android:hint="User Name"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.431"
@@ -51,7 +52,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="number"
-        android:text="Age"
+        android:hint="age"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.431"
