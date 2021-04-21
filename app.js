@@ -48,6 +48,10 @@ app.get("/rateus",function(req, res){
     res.render("rateus")
 })
 
+app.get("/sleep",function(req, res){
+    res.render("sleep")
+})
+
 
 
 
