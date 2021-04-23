@@ -20,8 +20,8 @@ tizen.ppm.requestPermission("http://tizen.org/privilege/healthinfo",onSuccess, o
 //watch physical button handling
 (function () {
 	
-	window.addEventListener("tizenhwkey", function (ev) {
-		if (ev.keyName === "back") {
+	window.addEventListener("tizenhwkey", function (EV) {
+		if (EV.keyName === "back") {
 		
 		var activePopup = null,
 			page = null,
