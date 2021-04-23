@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div class="container">
+            <input type="text" placeholder="Enter To Proceed">
+            <script src="script.js"></script>
+        </div>
+        <hr> -->
+    <!-- <div class="nextContainer">
+            <button id="pyBtn">Execute python script</button><hr>
+            {% if frame %}
+
+            {{frame}}
+
+            {% endif %}
+        </div>
+
+        <div id="videoContainer">
+            <video autoplay="true" id="videoElement">
+            
+            </video>
+            <br>
+            <br>
+            
+        </div>
+        <hr> -->
+
+    <p>Web Cam:</p>
+
+    <!-- Stream video via webcam -->
+    <video id="video1" controls width="450" playsinline autoplay></video>
+    <div>
+        <button onclick="stop()">Stop Detecting</button>
+    </div>
+    <br>
+    <div class="controller">
+        <button onclick="save()" id="snap">Capture</button>
+    </div>
+
+    <p>Canvas (shows the current frame of the video every 1000 milliseconds):</p>
+
+    <!-- Webcam video snapshot -->
+    <canvas id="myCanvas" width="270" height="135" style="border:1px solid #d3d3d3;">
+        Your browser does not support the HTML5</canvas>
+
+    <script>
+        var v = document.getElementById("video1");
+        var c = document.getElementById("myCanvas");
+        var ctx = c.getContext("2d");
+        var i;
+        var imgArray = new Array();
+
+        async function init() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia(constraints);
+                handleSuccess(stream);
+            }
+            catch (e) {
+            }
+        }
+
+        // Success
+        function handleSuccess(stream) {
+            window.stream = stream;
+            video.srcObject = stream;
+        }
+
+        const video = document.getElementById('video1');
+        const constraints = {
+            // audio: true,
+            video: {
+                width: 1280, height: 720
+            }
+        };
+        //load init
+        init();
+
+        //making a blob
+        function base64ToBlob(base64, mime) {
+            mime = mime || '';
+            var sliceSize = 1024;
+            var byteChars = window.atob(base64);
+            var byteArrays = [];
+
+            for (var offset = 0, len = byteChars.length; offset < len; offset += sliceSize) {
+                var slice = byteChars.slice(offset, offset + sliceSize);
+
+                var byteNumbers = new Array(slice.length);
+                for (var i = 0; i < slice.length; i++) {
+                    byteNumbers[i] = slice.charCodeAt(i);
+                }
+
+                var byteArray = new Uint8Array(byteNumbers);
+
+                byteArrays.push(byteArray);
+            }
+
+            return new Blob(byteArrays, { type: mime });
+        }
+
+        function save() {
+            var dataURL = c.toDataURL();
+
+            console.log("Test", dataURL);
+
+            // var image = new Image();
+
+            // image.src = dataURL;
+            // document.body.appendChild(image);
+            imgArray.push(dataURL);
+
+            console.log(imgArray)
+
+            // var formData = new FormData();
+
+            // formData.append('file', dataURL);
+
+
+            if (imgArray.length == 3) {
+                $.ajax({
+                    type: "POST",
+                    url: "http://127.0.0.1:5000/api/v1/resources/books/all",
+                    contentType: false,
+                    processData: false,
+                    origin: "*",
+                    data: {}
+                }).done(function(o) {
+                    console.log('Success');
+                });
+
+                
+                // var base64ImageContent = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+                // var blob = base64ToBlob(base64ImageContent, 'image/png');
+                // var formData = new FormData();
+                // formData.append('picture', blob);
+
+                // $.ajax({
+                //     url: "http://127.0.0.1:5000/api/v1/resources/books/all",
+                //     type: "POST",
+                //     cache: false,
+                //     contentType: false,
+                //     processData: false,
+                //     data: {}
+                //     // data: formData
+                // })
+                //     .done(function (e) {
+                //         alert('done!');
+                //     });
+
+                while (typeof (j = imgArray.shift()) !== 'undefined') {
+                    console.log(j);
+                }
+            }
+            console.log("TestArray", imgArray);
+        }
+
+
+
+        v.addEventListener("play", function () {
+            i = window.setInterval(function () {
+                ctx.drawImage(v, 5, 5, 260, 125)
+            }, 100);
+            //
+            // var dataURL = c.toDataURL();
+            // // const byteArray = new Uint8Array(dataURL);
+
+            // var image = new Image();
+            // var i;
+            // for (i = 0; i < 10; i++) {
+            //     image.src = dataURL;
+            //     document.body.appendChild(image);
+            //     imgArray.push(image);
+            // }
+            // console.log(imgArray)
+
+            // if (imgArray.length == 10) {
+            //     // $.ajax({
+            //     //     type: "POST",
+            //     //     url: "",
+            //     //     data: {
+            //     //         client_img_array: imgArray
+            //     //     }
+            //     // });
+
+            //     while (typeof (j = imgArray.shift()) !== 'undefined') {
+            //         console.log(j);
+            //     }
+            // }
+            // console.log("TestArray", imgArray);
+        }, false);
+        v.addEventListener("pause", function () { window.clearInterval(i); }, false);
+        v.addEventListener("ended", function () { clearInterval(i); }, false);
+
+        // const interval = setInterval(function () {
+        //     var dataURL = c.toDataURL();
+        //     // const byteArray = new Uint8Array(dataURL);
+
+        //     var image = new Image();
+
+        //     image.src = dataURL;
+        //     document.body.appendChild(image);
+        //     imgArray.push(image);
+
+        //     console.log(imgArray)
+
+        //     var formData = new FormData();
+
+        //     formData.append('file', image);
+
+        //     // if (imgArray.length == 10) {
+        //         $.ajax({
+        //             type: "POST",
+        //             url: "http://127.0.0.1:5000/api/v1/resources/books/all",
+        //             contentType: "application/json",
+        //             dataType: 'json',
+        //             data: formData
+        //         });
+
+        //         while (typeof (j = imgArray.shift()) !== 'undefined') {
+        //             console.log(j);
+        //         }
+        //     // }
+        //     console.log("TestArray", imgArray);
+        // }, 5000);
+
+        function stop(e) {
+            var stream = video.srcObject;
+            var tracks = stream.getTracks();
+
+            for (var i = 0; i < tracks.length; i++) {
+                var track = tracks[i];
+                track.stop();
+            }
+
+            video.srcObject = null;
+            clearInterval(interval);
+        }
+    </script>
+
+</body>
+
+</html>
