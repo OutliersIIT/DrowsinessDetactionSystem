@@ -9,6 +9,11 @@ app.set('view engine', 'ejs');
 const port = 3000;
 
 //get route for the app
+app.get("/login", function(req, res){
+    res.render("login");
+})
+
+//get route for the app
 app.get("/", function(req, res){
     res.render("home");
 })
@@ -41,6 +46,10 @@ app.get("/sleep",function(req, res){
 //get rout for the Rate Us
 app.get("/rateus",function(req, res){
     res.render("rateus")
+})
+
+app.get("/sleep",function(req, res){
+    res.render("sleep")
 })
 
 
